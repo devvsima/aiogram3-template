@@ -10,17 +10,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-t+!bmwe=6gk11!97s75v@@txwfs2iq1(7_1oep4rn4u*32l%6*"
 
-DEBUG = env.bool("server_debug", default=True)
+SERVER_DEBUG = env.bool("SERVER_DEBUG", default=True)
+
+SERVER_IP = env.str("SERVER_IP", default=None)
+SERVER_PORT = env.str("SERVER_PORT", default=8000)
+SERVER_DOMAIN = env.str("SERVER_DOMAIN", default=None)
 
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    env.str("server_ip", default=None),
-    env.str("server_domain", default=None),
+    SERVER_IP,
+    SERVER_DOMAIN,
 ]
-
-
-# Application definition
 
 INSTALLED_APPS = [
     "jazzmin",
@@ -125,5 +126,3 @@ STATIC_URL = "/static/"
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# LOGIN_URL = "/user/login/"

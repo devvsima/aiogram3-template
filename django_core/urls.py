@@ -7,8 +7,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 ]
 
-from .settings import DEBUG, MEDIA_URL, MEDIA_ROOT
+from .settings import SERVER_DEBUG, MEDIA_URL, MEDIA_ROOT
 
-if DEBUG:
+if SERVER_DEBUG:
     urlpatterns += [path("__debug__/", include("debug_toolbar.urls"))]
     urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
