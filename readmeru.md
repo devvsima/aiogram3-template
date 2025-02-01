@@ -15,7 +15,7 @@
 Сначала клонируйте репозиторий и перейдите в его директорию:
 
 ```bash
-git clone https://github.com/devvsima/aiogram3s-template.git
+git clone https://github.com/devvsima/aiogram3-template.git
 cd tgbot
 ```
 
