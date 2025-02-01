@@ -2,7 +2,7 @@ from aiogram import BaseMiddleware
 from aiogram.types import Message
 
 from tgbot_admin.bot.data.config import ADMINS
-from tgbot_admin.services import get_user
+from tgbot_admin.service import get_user
 
 from typing import Any, Callable
 

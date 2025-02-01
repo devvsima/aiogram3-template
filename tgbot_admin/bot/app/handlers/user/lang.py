@@ -4,7 +4,7 @@ from aiogram.filters.state import StateFilter
 
 from tgbot_admin.bot.app.routers import user_router as router
 
-from tgbot_admin.services import change_language
+from tgbot_admin.service import change_language
 
 from tgbot_admin.bot.app.handlers.msg_text import msg_text
 from tgbot_admin.bot.app.keyboards.inline.lang import lang_ikb

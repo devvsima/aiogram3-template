@@ -2,7 +2,7 @@ from aiogram import BaseMiddleware
 from aiogram.types import Message, CallbackQuery
 
 from typing import Any, Callable
-from tgbot_admin.services import get_or_create_user
+from tgbot_admin.service import get_or_create_user
 
 
 class UsersMiddleware(BaseMiddleware):

@@ -1,7 +1,7 @@
 from aiogram import BaseMiddleware
 from aiogram.types import Message
 
-from tgbot_admin.services import get_user, create_user, new_referral
+from tgbot_admin.service import get_user, create_user, new_referral
 
 
 from tgbot_admin.bot.utils.base62 import decode_base62
