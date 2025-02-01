@@ -12,11 +12,16 @@ ADMINS: list = env.list("ADMINS", default=None, subcast=int)
 SKIP_UPDATES: bool = env.bool("SKIP_UPDATES", default=False)
 
 # ---< Database >---
-DB_NAME: str = env.str("DB_NAME", default=None)
-DB_HOST: str = env.str("DB_HOST", default="localhost")
-DB_PORT: int = env.int("DB_PORT", default=5432)
-DB_USER: str = env.str("DB_USER", default="postgres")
-DB_PASS: str = env.str("DB_PASS", default="postgres")
+MONGO_HOST: str = env.str("MONGO_HOST", default="localhost")
+MONGO_PORT: int = env.int("MONGO_PORT", default=27017)
+MONGO_USER: str = env.str("MONGO_USER", default=None)
+MONGO_PASS: str = env.str("MONGO_PASS", default=None)
+MONGO_NAME: str = env.str("MONGO_NAME", default="template")
+
+MONGO_URL = env.str("MONGO_URL", default="mongodb://{MONGO_HOST}:{MONGO_PORT}/")
+
+if all([MONGO_USER, MONGO_PASS, MONGO_HOST, MONGO_PORT]):
+    MONGO_URL = f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/"
 
 # ---< Redis >---
 REDIS_HOST: str = env.str("REDIS_HOST", default=None)

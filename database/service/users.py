@@ -1,16 +1,19 @@
-from ..models.users import Users
+from ..connect import users_collection as user_coll
+
 from utils.logging import logger
 
 
-async def get_user(user_id: int) -> Users | None:
+async def get_user(user_id: int) -> dict | None:
     """Возвращает пользователя по его id"""
     try:
-        return Users.get(Users.id == user_id)
-    except:
+        user = await user_coll.find_one({"id": user_id})
+        return user
+    except Exception as e:
+        logger.error(f"Error getting user {user_id}: {e}")
         return None
 
 
-async def get_or_create_user(user_id: int, username: str = None, language: str = None) -> Users:
+async def get_or_create_user(user_id: int, username: str = None, language: str = None) -> dict:
     """Возвращает пользователя по его id, если его нет - создает"""
     if user := await get_user(user_id):
         return user
@@ -18,31 +21,43 @@ async def get_or_create_user(user_id: int, username: str = None, language: str =
     return await create_user(user_id, username, language)
 
 
-async def create_user(user_id: int, username: str = None, language: str = None) -> Users:
+async def create_user(user_id: int, username: str = None, language: str = None) -> dict:
     """Создает нового пользователя"""
+    user_data = {
+        "id": user_id,
+        "username": username,
+        "language": language,
+        "referral": 0,
+        "is_banned": False,
+    }
     logger.info(f"New user: {user_id} | {username}")
-    return Users.create(id=user_id, username=username, language=language)
+    await user_coll.insert_one(user_data)
+    return user_data
 
 
 async def update_user_username(user_id: int, username: str = None) -> None:
     """Обновляет данные пользователя"""
-    Users.update(username=username).where(Users.id == user_id).execute()
-    logger.info(f"Update user: {user_id} | {username}")
+    result = await user_coll.update_one({"id": user_id}, {"$set": {"username": username}})
+    if result.modified_count > 0:
+        logger.info(f"Update user: {user_id} | {username}")
 
 
 async def new_referral(inviter_id: int) -> None:
     """Добавляет приведенного реферала к пользователю inviter_id"""
-    Users.update(referral=Users.referral + 1).where(Users.id == inviter_id).execute()
-    logger.info(f"User: {inviter_id} | привел нового пользователя")
+    result = await user_coll.update_one({"id": inviter_id}, {"$inc": {"referral": 1}})
+    if result.modified_count > 0:
+        logger.info(f"User: {inviter_id} | привел нового пользователя")
 
 
 async def change_language(user_id: int, language: str) -> None:
     """Изменяет язык пользователя на language"""
-    Users.update(language=language).where(Users.id == user_id).execute()
-    logger.info(f"User: {user_id} | изменил язык на - {language}")
+    result = await user_coll.update_one({"id": user_id}, {"$set": {"language": language}})
+    if result.modified_count > 0:
+        logger.info(f"User: {user_id} | изменил язык на - {language}")
 
 
 async def ban_or_unban_user(user_id: int, is_banned: bool) -> None:
     """Меняет статус блокировки пользователя на заданный"""
-    Users.update(is_banned=is_banned).where(Users.id == user_id).execute()
-    logger.info(f"User: {user_id} | стату блокироваки изминен на - {is_banned}")
+    result = await user_coll.update_one({"id": user_id}, {"$set": {"is_banned": is_banned}})
+    if result.modified_count > 0:
+        logger.info(f"User: {user_id} | статус блокировки изменен на - {is_banned}")

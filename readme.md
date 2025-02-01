@@ -2,10 +2,10 @@
 
 ## 🛠️ Technologies Stack
 - `Aiogram3`
-- `i18n`
+- `MongoDB`
 - `Redis`
-- `Peewee`
-- `PostgreSQL \ Sqlite`
+- `Motor`
+- `i18n`
 
 ---
 
@@ -75,15 +75,16 @@ Add your bot token:
 BOT_TOKEN=123452345243:Asdfasdfasf
 ```
 
-### 5. Configuring the PostgreSQL database
+### 5. Configuring the MongoDB database
 
 Set the database connection parameters:
 
-- `DB_NAME` - database name
-- `DB_HOST` - database host (default = 'localhost')
-- `DB_PORT` - database port (default = `5432`)
-- `DB_USER` - database user
-- `DB_PASS` - database password
+- `MONGO_NAME` - database name (default = 'template')
+- `MONGO_HOST ` - database host (default = 'localhost')
+- `MONGO_PORT` - database port (default = `27017`)
+- `MONGO_USER ` - database user
+- `MONGO_PASS ` - database password
+- `MONGO_URL  ` - full MongoDB connection URL (optional)
 
 ### 6. Configuring Redis
 

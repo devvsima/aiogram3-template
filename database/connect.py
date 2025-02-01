@@ -1,20 +1,8 @@
-from peewee import PostgresqlDatabase, SqliteDatabase, Model
+from motor.motor_asyncio import AsyncIOMotorClient
 
-from data.config import DB_NAME, DB_HOST, DB_PORT, DB_USER, DB_PASS, DIR
+from data.config import MONGO_NAME, MONGO_URL
 
-from utils.logging import logger
+client = AsyncIOMotorClient(MONGO_URL)
+db = client[MONGO_NAME]
 
-
-if all([DB_NAME, DB_HOST, DB_PORT, DB_USER, DB_PASS]):
-    db = PostgresqlDatabase(DB_NAME, host=DB_HOST, port=DB_PORT, user=DB_USER, password=DB_PASS)
-    logger.info("Database: PostgreSql")
-else:
-    db = SqliteDatabase(f"{DIR}/database/db.sqlite3")
-    logger.info("Database: Sqlite")
-
-db.connect()
-
-
-class BaseModel(Model):
-    class Meta:
-        database = db
+users_collection = db["users"]

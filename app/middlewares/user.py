@@ -12,7 +12,7 @@ class UsersMiddleware(BaseMiddleware):
             username=event.from_user.username,
             language=event.from_user.language_code,
         )
-        if not user.is_banned:
+        if not user["is_banned"]:
             data["user"] = user
             return await handler(event, data)
         return
