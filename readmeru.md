@@ -1,13 +1,9 @@
-# 🚀 Начало работы
+# Aiogram3 mongodb template
 
-## 🛠️ Стек технологий
-- `Aiogram3`
-- `MongoDB`
-- `Redis`
-- `Motor`
+- `Aiogram 3`
 - `i18n`
-
----
+- ORM: `Motor`
+- Database: `MongoDB, Redis`
 
 ## 📥 Как установить?
 

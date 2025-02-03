@@ -1,13 +1,9 @@
-# 🚀 Getting Started
+# Aiogram3 mongodb template
 
-## 🛠️ Technologies Stack
-- `Aiogram3`
-- `MongoDB`
-- `Redis`
-- `Motor`
+- `Aiogram 3`
 - `i18n`
-
----
+- ORM: `Motor`
+- Database: `MongoDB, Redis`
 
 ## 📥 How to Install?
 
