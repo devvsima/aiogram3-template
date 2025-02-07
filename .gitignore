@@ -2,13 +2,14 @@
 .fleet
 .vscode
 .venv
-
 .sqlite
-
+database.sqlite3
 **/__pycache__
-**/migrations
+**/staticfiles
+**/nohup.out
 
-**.sqlite
-**.sqlite3
+
+
 **/.env
 **/logs
+**/goods_images
