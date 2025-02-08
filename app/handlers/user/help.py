@@ -1,12 +1,10 @@
 from aiogram import types
-from aiogram.filters import Command
-from aiogram.filters.state import StateFilter
+from aiogram.dispatcher.filters import Command, CommandHelp
 
-from app.routers import user_router as router
-from app.handlers.msg_text import msg_text
+from loader import _, dp
 
 
-@router.message(Command("help"), StateFilter(None))
-async def _help_command(message: types.Message) -> None:
-    """Дает описание бота"""
-    await message.answer(msg_text.INFO)
+@dp.message_handler(Command("Help 🆘"))
+@dp.message_handler(CommandHelp())
+async def _help_command(message: types.Message):
+    await message.answer(_("Help 🆘"))

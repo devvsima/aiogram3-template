@@ -1,9 +1,12 @@
-# Aiogram3 mongodb template
+# Aiogram mongodb template
 
-- `Aiogram 3`
+- `Aiogram 2`
+- `MongoDB`
+- `Redis`
+- `Motor`
 - `i18n`
-- ORM: `Motor`
-- Database: `MongoDB, Redis`
+
+---
 
 ## 📥 Как установить?
 
@@ -11,7 +14,7 @@
 Сначала клонируйте репозиторий и перейдите в его директорию:
 
 ```bash
-git clone https://github.com/devvsima/aiogram3-template.git
+git clone https://github.com/devvsima/aiogram-mongodb-template.git
 cd tgbot
 ```
 
@@ -81,6 +84,7 @@ BOT_TOKEN=123452345243:Asdfasdfasf
 - `MONGO_USER` - пользователь базы данных
 - `MONGO_PASS` - пароль базы данных
 - `MONGO_URL` - полная ссылка подключения к MongoDB (необязательно)
+
 
 ### 6. Настройка Redis
 

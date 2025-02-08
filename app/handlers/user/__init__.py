@@ -1,5 +1,5 @@
-from .help import router
-from .lang import router
-from .invite import router
+from .start import dp
+from .help import dp
+from .language import dp
 
-__all__ = ["router"]
+__all__ = ["dp"]

@@ -1,9 +1,12 @@
-# Aiogram3 mongodb template
+# Aiogram mongodb template
 
-- `Aiogram 3`
+- `Aiogram 2`
+- `MongoDB`
+- `Redis`
+- `Motor`
 - `i18n`
-- ORM: `Motor`
-- Database: `MongoDB, Redis`
+
+---
 
 ## 📥 How to Install?
 
@@ -11,7 +14,7 @@
 First, clone the repository and navigate to its directory:
 
 ```bash
-git clone https://github.com/devvsima/aiogram3-template.git
+git clone https://github.com/devvsima/aiogram-mongodb-template.git
 cd tgbot
 ```
 

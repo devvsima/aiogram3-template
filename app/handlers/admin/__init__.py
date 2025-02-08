@@ -1,3 +1,1 @@
-from .admin import router
-
-__all__ = ["router"]
+from .admin_panel import dp
